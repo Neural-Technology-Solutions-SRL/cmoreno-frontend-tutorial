@@ -1,6 +1,6 @@
 import React from "react";
 
-class TodoItem extends React.Component { 
+class TodoItem extends React.Component {
     render() {
 
         return (
@@ -9,9 +9,11 @@ class TodoItem extends React.Component {
           checked={this.props.todo.completed} 
           onChange={() => this.props.handleChangeProps(this.props.todo.id)}
           />
-        )
+            ) (<button onClick={() => this.props.deleteTodoProps(this.props.todo.id)}>
+        Delete
+      </button>)
     }
-
-    }
+    
+}
 
 export default TodoItem
