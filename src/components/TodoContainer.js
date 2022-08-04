@@ -12,24 +12,39 @@ class TodoContainer extends React.Component {
             {
                 id: 2,
                 title: "develope website and add content",
-                completed: false
+                completed: true
             },
-            {                
+            {
                 id: 3,
                 title: "Deploy to live server",
                 completed: false
             }
         ]
-    };
-    render(
-        
-    ) {
+    }
+
+    handleChange = (id) => {
+        this.setState(prevState => {
+            return {
+              todos: prevState.todos.map(todo => {
+                if (todo.id === id) {
+                  return {
+                    ...todo,
+                    completed: !todo.completed,
+                  }
+                }
+                return todo
+              }),
+            }
+          })
+        }
+    render() {
         return (
             <div>
                 <Header />
-                <TodosList todos={this.state.todos} />
-                </div>
+                <TodosList todos={this.state.todos} handleChangeProps={this.handleChange} />
+            </div>
         );
-    }
+        }     
+    
 }
 export default TodoContainer
