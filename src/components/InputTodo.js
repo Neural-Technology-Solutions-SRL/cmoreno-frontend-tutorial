@@ -1,7 +1,7 @@
-import react, { Component } from "react";
+import { Component } from "react";
 
 
-class InputTodo extends Component { 
+class InputTodo extends Component {
      
     onchange = e => {
             this.setState({
@@ -10,11 +10,15 @@ class InputTodo extends Component {
         };
         handleSubmit = e =>{
             e.preventDefault();
-           this.props.addTodoProps(this.state.title);
+            if (this.state.title.trim()) {
+            this.props.addTodoProps(this.estates.title)
            this.setState({
             title: ""
-        });
-        };
+        })
+        }else{
+            alert("Please write item")
+        }
+    }
 
     render() {
         return (
