@@ -2,24 +2,25 @@ import Header from "./Header";
 import React from "react";
 import TodosList from "./TodoList";
 import ImputTodo from "./InputTodo";
-import { v4 as uuidv4 } from "uuid";
+import { v4  as uuidv4 } from "uuid";
+
 
 
 class TodoContainer extends React.Component {
     state = {
         todos: [
             {
-                id: 1,
+                id: uuidv4(),
                 title: "Setup developement enviroment",
                 completed: true
             },
             {
-                id: 2,
+                id: uuidv4(),
                 title: "develope website and add content",
                 completed: true
             },
             {
-                id: 3,
+                id: uuidv4(),
                 title: "Deploy to live server",
                 completed: false
             }
@@ -62,7 +63,8 @@ class TodoContainer extends React.Component {
         };
     render() {
         return (
-            <div>
+            <div classname="container">
+              <div classname="inner">
                 <Header />
                 <ImputTodo addTodoProps={this.addTodoItems} />
                 <TodosList 
@@ -71,6 +73,7 @@ class TodoContainer extends React.Component {
                 deleteTodoProps={this.delTodo} 
                 />
             </div>
+          </div>
         );
      };     
   
