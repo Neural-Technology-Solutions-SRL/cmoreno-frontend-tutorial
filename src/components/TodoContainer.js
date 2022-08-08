@@ -1,6 +1,6 @@
-import Header from "./Header";
 import React from "react";
 import TodosList from "./TodoList";
+import Header from "./Header";
 import ImputTodo from "./InputTodo";
 import { v4  as uuidv4 } from "uuid";
 
@@ -8,23 +8,7 @@ import { v4  as uuidv4 } from "uuid";
 
 class TodoContainer extends React.Component {
     state = {
-        todos: [
-            {
-                id: uuidv4(),
-                title: "Setup developement enviroment",
-                completed: true
-            },
-            {
-                id: uuidv4(),
-                title: "develope website and add content",
-                completed: true
-            },
-            {
-                id: uuidv4(),
-                title: "Deploy to live server",
-                completed: false
-            }
-        ]
+        todos: [],
     }
 
     handleChange = (id) => {
@@ -37,23 +21,23 @@ class TodoContainer extends React.Component {
                     completed: !todo.completed,
                   }
                 }
-                return todo
-              }),
+                return todo;
+              })
             }
           })
-        }
-        delTodo = id => {
+        };
+        delTodo = (id) => {
           this.setState({
             todos: [
               ...this.state.todos.filter(todo => {
                 return todo.id !== id;
               })
             ]
-          })
+          });
         };
         addTodoItem = title => {
           const newTodo = {
-            id: 4,
+            id: uuidv4(),
             title: title,
             completed: false
           };
@@ -67,15 +51,33 @@ class TodoContainer extends React.Component {
               todo.title = updatedTitle
             }
             return todo
-          }),
-        })
+          })
+        }) 
+        console.log(updatedTitle, id)
         }
+        componentDidUpdate(prevProps, prevState) {
+  if(prevState.todos !== this.state.todos) {
+    const temp = JSON.stringify(this.state.todos)
+    localStorage.setItem("todos", temp)
+  }
+}
+componentDidMount() {
+  const temp = localStorage.getItem("todos")
+  const loadedTodos = JSON.parse(temp)
+  if (loadedTodos) {
+    this.setState({
+      todos: loadedTodos
+    })
+  }
+}
+        
     render() {
         return (
-            <div classname="container">
-              <div classname="inner">
+          
+            <div className="container">
+              <div className="inner">
                 <Header />
-                <ImputTodo addTodoProps={this.addTodoItems} />
+                <ImputTodo addTodoProps={this.addTodoItem} />
                 <TodosList 
                 todos={this.state.todos} 
                 handleChangeProps={this.handleChange}
@@ -84,9 +86,10 @@ class TodoContainer extends React.Component {
                 />
             </div>
           </div>
-        );
-     };     
+        )
+     }  
+      
   
-    }
+    };
 
 export default TodoContainer
