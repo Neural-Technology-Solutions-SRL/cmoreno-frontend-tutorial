@@ -6,7 +6,7 @@ const Header = () => {
         lineHeight: "1.5em",
     }
     return (
-        <header style={headerStyle}>
+        <Header style={headerStyle}>
             <h1>
                 style={{
                      fontSize: "6rem",
@@ -19,7 +19,7 @@ const Header = () => {
                 }}
                 todos
                 </h1>
-        </header>
+        </Header>
     )
 }
 
