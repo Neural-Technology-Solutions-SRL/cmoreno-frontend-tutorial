@@ -7,8 +7,9 @@ const Header = () => {
     }
     return (
         <header style={headerStyle}>
-            <h1>
+            <h1
                 style={{
+                     fontSize: "6rem",
                      fontWeight: "600",
                      marginBottom: "2rem",
                      lineHeight: "1em",
@@ -16,8 +17,7 @@ const Header = () => {
                      textTransform: "lowercase",
                      textAlign: "center",
                 }}
-                todos
-                </h1>
+                >todos</h1>
         </header>
     )
 }

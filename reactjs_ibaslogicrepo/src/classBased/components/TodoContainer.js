@@ -8,23 +8,7 @@ import { v4  as uuidv4 } from "uuid";
 
 class TodoContainer extends React.Component {
     state = {
-        todos: [
-            {
-                id: uuidv4(),
-                title: "Setup developement enviroment",
-                completed: true
-            },
-            {
-                id: uuidv4(),
-                title: "develope website and add content",
-                completed: true
-            },
-            {
-                id: uuidv4(),
-                title: "Deploy to live server",
-                completed: false
-            }
-        ]
+        todos: []
     }
 
     handleChange = (id) => {
@@ -61,16 +45,26 @@ class TodoContainer extends React.Component {
             todos: [...this.state.todos, newTodo]
           });
         };
+        setUpdate = (updatedTitle, id) => {this.setState({
+          todos: this.state.todos.map(todo => {
+            if (todo.id === id) {
+              todo.title = updatedTitle
+            }
+            return todo
+          }),
+        })
+        }
     render() {
         return (
-            <div classname="container">
-              <div classname="inner">
+            <div className="container">
+              <div className="inner">
                 <Header />
                 <ImputTodo addTodoProps={this.addTodoItems} />
                 <TodosList 
                 todos={this.state.todos} 
                 handleChangeProps={this.handleChange}
                 deleteTodoProps={this.delTodo} 
+                setUpdate={this.setUpdate}
                 />
             </div>
           </div>
