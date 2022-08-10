@@ -19,9 +19,11 @@ const InputTodo = props => {
         props.addTodoProps(inputText.title)
         setInputText({
           title: "",
-        })
-    } else{
-    alert("Please write item")
+      })
+
+    } else {
+
+        alert("Please write item")
     }
 }
   return (

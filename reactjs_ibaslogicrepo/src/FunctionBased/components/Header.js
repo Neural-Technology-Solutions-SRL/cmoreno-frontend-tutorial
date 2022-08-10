@@ -1,13 +1,13 @@
 import React from "react"
 
-const Header = () => {
+const header = () => {
     const headerStyle = {
         padding: "20px 0",
         lineHeight: "1.5em",
     }
     return (
-        <Header style={headerStyle}>
-            <h1>
+        <header style={headerStyle}>
+            <h1
                 style={{
                      fontSize: "6rem",
                      fontWeight: "600",
@@ -16,11 +16,11 @@ const Header = () => {
                      color: "#ececec",
                      textTransform: "lowercase",
                      textAlign: "center",
-                }}
+                }}>
                 todos
                 </h1>
-        </Header>
+        </header>
     )
 }
 
-export default Header
+export default header

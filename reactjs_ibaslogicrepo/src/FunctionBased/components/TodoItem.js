@@ -31,7 +31,9 @@ const TodoItem = props => {
 
         if (editing) {
           viewMode.display = "none"
+           
         }else{
+          
           editMode.display = "none"
         }      
         useEffect(() => {

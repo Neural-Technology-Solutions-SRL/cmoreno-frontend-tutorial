@@ -56,8 +56,8 @@ class TodoContainer extends React.Component {
         }
     render() {
         return (
-            <div classname="container">
-              <div classname="inner">
+            <div className="container">
+              <div className="inner">
                 <Header />
                 <ImputTodo addTodoProps={this.addTodoItems} />
                 <TodosList 

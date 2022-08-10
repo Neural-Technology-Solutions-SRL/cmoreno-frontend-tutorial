@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import InputTodo from "./InputTodo";
-import TodosList from "./TodoList";
+import TodoList from "./TodoList";
 import { v4  as uuidv4 } from "uuid";
+import { Route, Routes } from "react-router-dom";
+import About from "../pages/About";
+import NotMatch from "../pages/NotMatch";
+import Navbar from "./Navbar";
 
 
 const TodoContainer = () => {
-  /*state = {
-    todos:[],
-  }*/
+
   
   const [todos, setTodos] = useState(getInitialTodos())
 
@@ -56,8 +58,8 @@ const TodoContainer = () => {
   }
   useEffect(()=>{
     console.log("test run")
-    // getting stored items
-        const temp = localStorage.getItem("todos")
+
+    const temp = localStorage.getItem("todos")
         const loadedTodos = JSON.parse(temp)
     if (loadedTodos){
         setTodos(loadedTodos)
@@ -66,34 +68,42 @@ const TodoContainer = () => {
   []);
   useEffect(()=>{
     console.log("test run")
-    // getting stored items
+ 
     const temp = JSON.stringify(todos)
     localStorage.setItem("todos", temp)
     },
     [todos]
   );
         function getInitialTodos(){
-          //getting stored items
-           const temp = localStorage.getItem("todos")
+
+          const temp = localStorage.getItem("todos")
           const savedTodos = JSON.parse(temp)
        return savedTodos || 
        []
     }
 
-       return (
-    <div className="container">
-      <div className="inner">
-        <Header />
-        <InputTodo addTodoProps={addTodoItem} />
-        <TodosList
-          todos={todos}
-          handleChangeProps={handleChange}
-          deleteTodoProps={delTodo}
-          setUpdate={setUpdate}
-        />
-      </div>
-    </div>
+  return (
+    <>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element = {
+          <div className="container">
+            <div className="inner">
+              <Header />
+              <InputTodo addTodoprops={addTodoItem} />
+              <TodoList
+                todos={todos}
+                handleChangeprops={handleChange}
+                deleteTodoprops={delTodo}
+                setUpdate={setUpdate} 
+              />
+            </div>
+          </div>
+        }/>
+        <Route path="about/*" element={ <About /> } />
+        <Route path="*" element = { <NotMatch /> } />
+      </Routes>
+    </>
   )
 }
-
 export default TodoContainer;
