@@ -2,18 +2,16 @@ import { FaPlusCircle } from "react-icons/fa"
 import React, { useState } from "react"
 
 const InputTodo = props => {
-  const [inputText, setInputText] = useState({
-    title: "",
-  })
+  const [inputText, setInputText] = useState({ title: "", })
 
-  const onChange = e => {
+  const onChange = (e) => {
     setInputText({
       ...inputText,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (inputText.title.trim()) {
         props.addTodoProps(inputText.title)

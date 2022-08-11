@@ -9,9 +9,7 @@ import NotMatch from "../pages/NotMatch";
 import Navbar from "./Navbar";
 
 
-const TodoContainer = () => {
-
-  
+const TodoContainer = () => {  
   const [todos, setTodos] = useState(getInitialTodos())
 
   const handleChange = (id) => {
@@ -27,22 +25,22 @@ const TodoContainer = () => {
         return todo;
       })
     )
-  }
+  };
 
-  const delTodo = id => {
+  const delTodo = (id) => {
     setTodos([
       ...todos.filter(todo => {
-        return todo.id !== id
+        return todo.id !== id;
       })
     ]);
   };
 
-  const addTodoItem = title => {
+  const addTodoItem = (title) => {
     const newTodo = {
       id: uuidv4(),
       title: title,
       completed: false,
-    }
+    };
     setTodos([...todos, newTodo])
   }
 
@@ -55,11 +53,10 @@ const TodoContainer = () => {
         return todo
       })
     )
-  }
+  };
   useEffect(()=>{
     console.log("test run")
-
-    const temp = localStorage.getItem("todos")
+        const temp = localStorage.getItem("todos")
         const loadedTodos = JSON.parse(temp)
     if (loadedTodos){
         setTodos(loadedTodos)
@@ -67,15 +64,13 @@ const TodoContainer = () => {
     },
   []);
   useEffect(()=>{
-    console.log("test run")
- 
-    const temp = JSON.stringify(todos)
-    localStorage.setItem("todos", temp)
+    console.log("test run") 
+        const temp = JSON.stringify(todos)
+        localStorage.setItem("todos", temp)
     },
     [todos]
   );
-        function getInitialTodos(){
-
+    function getInitialTodos(){
           const temp = localStorage.getItem("todos")
           const savedTodos = JSON.parse(temp)
        return savedTodos || 
@@ -83,18 +78,18 @@ const TodoContainer = () => {
     }
 
   return (
-    <>
+    <React.Fragment>
       <Navbar/>
       <Routes>
-        <Route path="/" element = {
+        <Route exact="true" path="/" element = {
           <div className="container">
             <div className="inner">
               <Header />
-              <InputTodo addTodoprops={addTodoItem} />
+              <InputTodo addTodoProps={addTodoItem} />
               <TodoList
                 todos={todos}
-                handleChangeprops={handleChange}
-                deleteTodoprops={delTodo}
+                handleChangeProps={handleChange}
+                deleteTodoProps={delTodo}
                 setUpdate={setUpdate} 
               />
             </div>
@@ -103,7 +98,7 @@ const TodoContainer = () => {
         <Route path="about/*" element={ <About /> } />
         <Route path="*" element = { <NotMatch /> } />
       </Routes>
-    </>
+    </React.Fragment>
   )
 }
 export default TodoContainer;
