@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cmoreno-frontend-tutorial/static/css/main.a75ebd1f.css",
-    "main.js": "/cmoreno-frontend-tutorial/static/js/main.793cea09.js",
+    "main.css": "/cmoreno-frontend-tutorial/static/css/main.afb4bb93.css",
+    "main.js": "/cmoreno-frontend-tutorial/static/js/main.1782dc70.js",
     "index.html": "/cmoreno-frontend-tutorial/index.html",
-    "main.a75ebd1f.css.map": "/cmoreno-frontend-tutorial/static/css/main.a75ebd1f.css.map",
-    "main.793cea09.js.map": "/cmoreno-frontend-tutorial/static/js/main.793cea09.js.map"
+    "main.afb4bb93.css.map": "/cmoreno-frontend-tutorial/static/css/main.afb4bb93.css.map",
+    "main.1782dc70.js.map": "/cmoreno-frontend-tutorial/static/js/main.1782dc70.js.map"
   },
   "entrypoints": [
-    "static/css/main.a75ebd1f.css",
-    "static/js/main.793cea09.js"
+    "static/css/main.afb4bb93.css",
+    "static/js/main.1782dc70.js"
   ]
 }
